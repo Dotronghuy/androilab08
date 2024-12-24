@@ -29,12 +29,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     String dbName = "contactDB.db";
     String dbPath = "/databases/";
     SQLiteDatabase db = null;
-    ArrayAdapter<Contact> adapter;
+    ContactAdapter adapter;
     ListView lvContact;
 
     Button btnThem;
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void addView() {
         lvContact = findViewById(R.id.lvContact);
-        adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1);
+        adapter = new ContactAdapter(MainActivity.this, R.layout.list_item_contact, new ArrayList<>());
         lvContact.setAdapter(adapter);
         registerForContextMenu(lvContact);
     }
